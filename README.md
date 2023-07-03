@@ -17,10 +17,10 @@ A dynamically intepreted language that enables rapid development and efficiency
 
 These features were inspired of Typescript and Zig. These includes
 
-- [] add type hinting system
-- [] add struct and enum data structure
-- [] add support for generics
-- [] add support for pattern-matching (Zig-style)
+- [ ] add type hinting system
+- [ ] add struct and enum data structure
+- [ ] add support for generics
+- [ ] add support for pattern-matching (Zig-style)
 
 ## Main goals of Molang
 
