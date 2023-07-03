@@ -10,8 +10,8 @@ func TestNextToken(t *testing.T) {
   input := `=+(){},;`
 
   tests := []struct {
-    exceptedType token.TokenType
-    exceptedLiteral string
+    expectedType token.TokenType
+    expectedLiteral string
   }{
     {token.ASSIGN, "="},
     {token.PLUS, "+"},

@@ -1,8 +1,6 @@
 package lexer
 
-import (
-	"github.com/Daniel-Brai/Molang/token"
-)
+import "github.com/Daniel-Brai/Molang/token"
 
 type Lexer struct {
 	input        string
