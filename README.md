@@ -11,16 +11,16 @@ A dynamically intepreted language that enables rapid development and efficiency
 5. built-in functions
 6. first-class and higher-order functions
 7. closures
-8. data structures such as string, array, hash and so on.
+8. data structures such as string, array, and hash.
 
 ## Possible future features of Molang
 
 These features were inspired of Typescript and Zig. These includes
 
-[] add type hinting system for declarations
-[] add struct and enum data structure
-[] add support for generics
-[] add support for pattern-matching (Zig-style)
+- [] add type hinting system
+- [] add struct and enum data structure
+- [] add support for generics
+- [] add support for pattern-matching (Zig-style)
 
 ## Main goals of Molang
 
