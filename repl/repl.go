@@ -1,32 +1,44 @@
 package repl
 
 import (
-  "bufio"
-  "fmt"
-  "io"
+	"bufio"
+	"fmt"
+	"io"
 
-  "github.com/Daniel-Brai/Molang/lexer"
-  "github.com/Daniel-Brai/Molang/token"
+	"github.com/Daniel-Brai/Molang/lexer"
+	"github.com/Daniel-Brai/Molang/parser"
 )
 
 const PROMPT = ">> "
 
 func Start(in io.Reader, out io.Writer) {
-  scanner := bufio.NewScanner(in)
+	scanner := bufio.NewScanner(in)
 
-  for {
-    fmt.Println(PROMPT)
-    scanned := scanner.Scan()
+	for {
+		fmt.Println(PROMPT)
+		scanned := scanner.Scan()
 
-    if !scanned {
-      return
-    }
+		if !scanned {
+			return
+		}
 
-    line := scanner.Text()
-    l := lexer.New(line)
+		line := scanner.Text()
+		l := lexer.New(line)
+		p := parser.New(l)
+		program := p.ParseProgram()
+		if len(p.Errors()) != 0 {
+			printParserErrors(out, p.Errors())
+			continue
+		}
+		io.WriteString(out, program.String())
+		io.WriteString(out, "\n")
+	}
+}
 
-    for tok := l.NextToken(); tok.Type != token.EOF; tok = l.NextToken() {
-      fmt.Printf("%+v\n", tok)
-    }
-  }
+func printParserErrors(out io.Writer, errors []string) {
+  io.WriteString(out, "Oops! We ran into some problems here!\n")
+  io.WriteString(out, " parser errors:\n")
+	for _, msg := range errors {
+		io.WriteString(out, "\t"+msg+"\n")
+	}
 }
